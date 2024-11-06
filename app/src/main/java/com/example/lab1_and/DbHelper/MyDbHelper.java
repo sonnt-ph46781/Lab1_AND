@@ -17,6 +17,17 @@ public class MyDbHelper extends SQLiteOpenHelper {
         String sqlProduct = "CREATE TABLE tb_product (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT UNIQUE NOT NULL,  price REAL DEFAULT (0.0) NOT NULL,  id_cat INTEGER REFERENCES tb_cat (id))";
         db.execSQL((sqlProduct));
         //Moi khi chinh sua cau lenh SQL o tren thi tang version o ham khoi tao
+
+        // Thêm dữ liệu mẫu cho tb_cat
+        db.execSQL("INSERT INTO tb_cat(name) VALUES ('Dien thoai')");
+        db.execSQL("INSERT INTO tb_cat(name) VALUES ('TIVI')");
+        db.execSQL("INSERT INTO tb_cat(name) VALUES ('Tu lanh')");
+
+        // Thêm dữ liệu mẫu cho tb_product
+        db.execSQL("INSERT INTO tb_product(name, price, id_cat) VALUES ('Xiaomi', 1200.0, 1)");
+        db.execSQL("INSERT INTO tb_product(name, price, id_cat) VALUES ('Sony', 15.0, 2)");
+        db.execSQL("INSERT INTO tb_product(name, price, id_cat) VALUES ('Toshiba', 70.0, 3)");
+
     }
 
     @Override
